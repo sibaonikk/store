@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <!--...--->
-    <body>
-        <nav>
-            <%= link_to "Home", root_path %>
-            <%= button_to "Log out", session_path, method: :delete if authenticated? %>
-            <%= link_to "Login", new_session_path unless authenticated? %>
-        </nav>
+  <head>
+    <title>MyApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-        <main>
-            <%= yield %>
-        </main>
-    </body>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <nav>
+      <%= link_to "Home", root_path %>
+      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
 </html>
